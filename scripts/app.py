@@ -9,8 +9,13 @@ rf_model = joblib.load("models/rf_model.pkl")
 svm_model = joblib.load("models/svm_model.pkl")
 
 def classify_texture(image):
+
+    if image is None:
+        return "Error: No image provided", "Error: No image provided"
     # Convert PIL image to numpy array and ensure grayscale
     image = np.array(image.convert('L'))
+
+
     glcm_features = list(fe.extract_glcm_features(image).values())
     lbp_features = list(fe.extract_lbp_features(image))
     features = np.hstack([glcm_features, lbp_features])
