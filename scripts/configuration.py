@@ -62,10 +62,10 @@ css = """
             margin-top: 20px;
         }
 
-        .gradio-button {
+        button {
             padding: 12px 20px;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.8rem;
             font-weight: bold;
             transition: all 0.3s ease-in-out;
         }
@@ -100,4 +100,16 @@ css = """
             color: white;
             border: none;
         }
+        .source-selection {
+            display: none;
+        }
+
+        .unpadded_box {
+          height: 250px !important;
+        }
+
+        .output-class {
+            height: 230px !important;
+        }
+
     """
