@@ -9,12 +9,12 @@ PROCESSED_PATH = "data/processed/"
 
 def extract_glcm_features(image):
     """Extracts GLCM features from an image."""
-    glcm = skf.greycomatrix(image, distances=[1], angles=[0], levels=256, symmetric=True, normed=True)
+    glcm = skf.graycomatrix(image, distances=[1], angles=[0], levels=256, symmetric=True, normed=True)
     return {
-        "contrast": skf.greycoprops(glcm, 'contrast')[0, 0],
-        "correlation": skf.greycoprops(glcm, 'correlation')[0, 0],
-        "energy": skf.greycoprops(glcm, 'energy')[0, 0],
-        "homogeneity": skf.greycoprops(glcm, 'homogeneity')[0, 0]
+        "contrast": skf.graycoprops(glcm, 'contrast')[0, 0],
+        "correlation": skf.graycoprops(glcm, 'correlation')[0, 0],
+        "energy": skf.graycoprops(glcm, 'energy')[0, 0],
+        "homogeneity": skf.graycoprops(glcm, 'homogeneity')[0, 0]
     }
 
 def extract_lbp_features(image, radius=3, n_points=8 * 3):
