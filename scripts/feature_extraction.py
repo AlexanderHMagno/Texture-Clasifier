@@ -9,7 +9,7 @@ PROCESSED_PATH = "data/processed/"
 
 def extract_glcm_features(image):
     """Extracts GLCM features from an image."""
-    glcm = skf.graycomatrix(image, distances=[1], angles=[0], levels=256, symmetric=True, normed=True)
+    glcm = skf.graycomatrix(image, distances=[1,3,5], angles=[0, np.pi/4, np.pi/2, 3*np.pi/4], levels=256, symmetric=True, normed=True)
     return {
         "contrast": skf.graycoprops(glcm, 'contrast')[0, 0],
         "correlation": skf.graycoprops(glcm, 'correlation')[0, 0],
@@ -19,7 +19,7 @@ def extract_glcm_features(image):
 
 def extract_lbp_features(image, radius=3, n_points=8 * 3):
     """Extracts LBP histogram from an image."""
-    lbp = local_binary_pattern(image, n_points, radius, method="uniform")
+    lbp = local_binary_pattern(image, n_points, radius, method="ror")
     hist, _ = np.histogram(lbp.ravel(), bins=np.arange(0, n_points + 3), density=True)
     return hist
 
