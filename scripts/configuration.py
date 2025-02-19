@@ -94,12 +94,8 @@ css = """
             display: none;
         }
 
-        .unpadded_box {
-          height: 250px !important;
-        }
-
-        .output-class {
-            height: 230px !important;
+        .unpadded_box, .output-class  {
+          height: 96px !important;
         }
 
     """
