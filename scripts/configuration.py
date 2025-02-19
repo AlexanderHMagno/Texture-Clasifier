@@ -13,8 +13,6 @@ article = """
     """
 
 theme = gr.themes.Base().set(
-        body_background_fill="linear-gradient(to right, #f5f5f5, #e8e8e8)",  # Gradient background
-        block_background_fill="rgba(255, 255, 255, 0.7)",  # Glass effect
         block_border_width="0px",
         block_radius="12px",  # Rounded corners for sections
         block_shadow="0 4px 8px rgba(0,0,0,0.2)",  # Soft shadow effect
@@ -32,13 +30,24 @@ theme = gr.themes.Base().set(
     )
 
 css = """
+        :root .dark {
+            --body-background-fill: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(69,9,121,1) 35%, rgba(89,9,121,1) 100%);
+            --block-background-fill: rgba(2, 0, 36, 1)!important;
+        }
+
+        
+        :root {
+            --body-background-fill: linear-gradient(45deg, rgba(89,9,121,1) 0%, rgba(255,255,255,1) 90%);
+            --block-background-fill: rgba(255, 255, 255, 1)!important;
+        }
+
         .gradio-container {
             max-width: 900px;
             margin: auto;
             padding: 30px;
-            background: RGBA(50, 50, 50, 0.2);
+            background: transparent;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            
         }
 
         .image-container {
@@ -55,12 +64,6 @@ css = """
             object-fit: cover;
         }
 
-        .footer {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 20px;
-        }
 
         button {
             padding: 12px 20px;
@@ -71,26 +74,13 @@ css = """
         }
 
         .gradio-button.primary {
-            background: linear-gradient(135deg, #007bff, #0056b3);
+            background: linear-gradient(45deg, #007bff, #0056b3);
             border: none;
             color: white;
             box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
         }
 
-        .gradio-button.primary:hover {
-            background: linear-gradient(135deg, #0056b3, #004094);
-            transform: scale(1.05);
-        }
 
-        .gradio-button.secondary {
-            background: rgba(0, 0, 0, 0.05);
-            color: #333;
-            border: 1px solid #ccc;
-        }
-
-        .gradio-button.secondary:hover {
-            background: rgba(0, 0, 0, 0.1);
-        }
 
         label {
             font-size: 0.5rem;
