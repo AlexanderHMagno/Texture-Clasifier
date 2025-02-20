@@ -19,15 +19,16 @@ def classify_texture(image):
 
     glcm_features = list(fe.extract_glcm_features(image).values())
     lbp_features = list(fe.extract_lbp_features(image))
-
-    print('glcm_features', glcm_features)
     features = np.hstack([glcm_features, lbp_features])
 
+    
     rf_prediction = rf_model.predict([features])[0]
     svm_prediction = svm_model.predict([features])[0]
     dt_prediction = dt_model.predict([features])[0]
+    
 
-    return f"Random Forest: {rf_prediction}", f"SVM: {svm_prediction}", f"Decision Tree: {dt_prediction}"
+    return f"SVM: {svm_prediction}", f"Decision Tree: {svm_prediction}"
+
 
 
 # Create a more professional interface
@@ -35,7 +36,7 @@ demo = gr.Interface(
     fn=classify_texture,
     inputs= [gr.Image(type="pil", label="Upload Texture Image")],
 
-    outputs=[gr.Label(label="Classification Random Forest"), gr.Label(label="Classification SVM"), gr.Label(label="Classification Decision Tree")],
+    outputs=[gr.Label(label="SVM "), gr.Label(label="Decision Tree")],
     title="Material Texture Classifier",
     description="""This application classifies material textures into three categories: stone, brick, and wood.
                    Upload an image of a texture and the model will predict its material type.""",
