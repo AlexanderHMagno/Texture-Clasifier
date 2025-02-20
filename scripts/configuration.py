@@ -99,3 +99,6 @@ css = """
         }
 
     """
+
+
+check_categories = ["stone", "wood", "brick"]

@@ -4,7 +4,7 @@ import os
 import pandas as pd
 import skimage.feature as skf
 from skimage.feature import local_binary_pattern
-
+from configuration import check_categories
 PROCESSED_PATH = "data/processed/"
 
 def extract_glcm_features(image):
@@ -25,7 +25,7 @@ def extract_lbp_features(image, radius=3, n_points=8 * 3):
 
 def extract_features():
     data = []
-    for category in ["stone", "brick", "wood"]:
+    for category in check_categories:
         category_path = os.path.join(PROCESSED_PATH, category)
         for img_name in os.listdir(category_path):
             img_path = os.path.join(category_path, img_name)
