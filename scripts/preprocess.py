@@ -1,6 +1,6 @@
 import cv2
 import os
-
+from configuration import check_categories
 DATA_PATH = "data/raw/"
 PROCESSED_PATH = "data/processed/"
 IMG_SIZE = (200, 200)  # Resize images
@@ -9,7 +9,7 @@ def preprocess_images():
     if not os.path.exists(PROCESSED_PATH):
         os.makedirs(PROCESSED_PATH)
 
-    for category in ["stone", "brick", "wood"]:
+    for category in check_categories:
         category_path = os.path.join(DATA_PATH, category)
         processed_category_path = os.path.join(PROCESSED_PATH, category)
 
