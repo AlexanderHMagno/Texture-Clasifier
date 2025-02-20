@@ -23,17 +23,9 @@ def classify_texture(image):
     print('glcm_features', glcm_features)
     features = np.hstack([glcm_features, lbp_features])
 
-    rf_prediction = rf_model.predict([features])
-    svm_prediction = svm_model.predict([features])
-    dt_prediction = dt_model.predict([features])
-
-    print('rf_prediction', rf_prediction)
-    print('svm_prediction', svm_prediction)
-    print('dt_prediction', dt_prediction)
-
-    rf_prediction = rf_prediction[0]
-    svm_prediction = svm_prediction[0]
-    dt_prediction = dt_prediction[0]
+    rf_prediction = rf_model.predict([features])[0]
+    svm_prediction = svm_model.predict([features])[0]
+    dt_prediction = dt_model.predict([features])[0]
 
     return f"Random Forest: {rf_prediction}", f"SVM: {svm_prediction}", f"Decision Tree: {dt_prediction}"
 
