@@ -5,6 +5,9 @@ data/raw/
 data/features.csv
 data/test/
 data/
+.qodo/
+.empty/
+
 
 
 
