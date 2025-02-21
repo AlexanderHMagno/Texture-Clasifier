@@ -6,6 +6,8 @@ import skimage.feature as skf
 from skimage.feature import local_binary_pattern
 from configuration import check_categories
 PROCESSED_PATH = "data/processed/"
+FEATURES_PATH = "data/features.csv"
+
 
 def extract_glcm_features(image):
     """Extracts GLCM features from an image."""
@@ -25,6 +27,10 @@ def extract_lbp_features(image, radius=3, n_points=8 * 3):
 
 def extract_features():
     data = []
+    # Delete features.csv if it exists
+    if os.path.exists(FEATURES_PATH):
+        os.remove(FEATURES_PATH)
+
     for category in check_categories:
         category_path = os.path.join(PROCESSED_PATH, category)
         for img_name in os.listdir(category_path):
@@ -38,7 +44,7 @@ def extract_features():
                 data.append([category] + combined_features)
 
     df = pd.DataFrame(data)
-    df.to_csv("data/features.csv", index=False)
+    df.to_csv(FEATURES_PATH, index=False)
     print("✅ Feature extraction complete! Saved in data/features.csv")
 
 if __name__ == "__main__":

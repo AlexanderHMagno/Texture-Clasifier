@@ -6,15 +6,19 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 import joblib
+import os
 
 # Load extracted features
 df = pd.read_csv("data/features.csv")
 X = df.iloc[:, 1:].values  # Features
 y = df.iloc[:, 0].values  # Labels
 
+# Delete models if they exist
+for model_file in os.listdir("models"):
+    os.remove(os.path.join("models", model_file))
+
+
 # Split data
-
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Train SVM

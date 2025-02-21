@@ -6,8 +6,17 @@ PROCESSED_PATH = "data/processed/"
 IMG_SIZE = (200, 200)  # Resize images
 
 def preprocess_images():
+
+    # Create processed directory if it doesn't exist
     if not os.path.exists(PROCESSED_PATH):
         os.makedirs(PROCESSED_PATH)
+    
+    # Delete all files and subdirectories in PROCESSED_PATH if it exists
+    for root, dirs, files in os.walk(PROCESSED_PATH, topdown=False):
+        for name in files:
+            os.remove(os.path.join(root, name))
+        for name in dirs:
+            os.rmdir(os.path.join(root, name))
 
     for category in check_categories:
         category_path = os.path.join(DATA_PATH, category)
