@@ -3,5 +3,8 @@ texture_env/
 data/processed/
 data/raw/
 data/features.csv
+data/test/
+data/
+
 
 
