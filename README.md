@@ -13,6 +13,11 @@ pinned: false
 
 This repository contains an implementation of a texture classification system that distinguishes between images of stone, brick, and wood textures. The project utilizes feature extraction techniques such as Gray-Level Co-occurrence Matrix (GLCM) and Local Binary Pattern (LBP), combined with machine learning classifiers, to achieve accurate texture recognition.
 
+
+## REPORT
+
+[📘 view Report](report.md)
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
